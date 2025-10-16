@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<!-- Back to Home button (drop-in) -->
+<style>
+  /* Inherit theme if available, otherwise fall back */
+  :root{
+    --yd-primary: var(--primary, #2563eb);
+    --yd-primary-2: #4f8bff;
+    --yd-border: var(--border, #e5e7eb);
+    --yd-shadow: 0 10px 30px rgba(37,99,235,.25);
+  }
+  [data-theme="pink"]{
+    --yd-primary: #e91e63;
+    --yd-primary-2: #ff6fa1;
+    --yd-shadow: 0 10px 30px rgba(233,30,99,.28);
+  }
+
+  .ydh-home{
+    position: sticky; top: 12px; z-index: 50;
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.7rem 1rem; border-radius:999px;
+    background-image: linear-gradient(135deg,var(--yd-primary),var(--yd-primary-2));
+    color:#fff; font-weight:700; letter-spacing:.2px;
+    border:1px solid rgba(255,255,255,.32);
+    box-shadow: var(--yd-shadow);
+    text-decoration:none; -webkit-tap-highlight-color:transparent;
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  }
+  .ydh-home:hover{ transform: translateY(-1px); filter:saturate(1.08) }
+  .ydh-home:active{ transform: translateY(0); filter:saturate(1) }
+  .ydh-home:focus-visible{ outline:2px solid #fff; outline-offset:2px }
+  .ydh-home svg{ width:18px; height:18px; stroke:currentColor }
+  @media (max-width:768px){
+    .ydh-home{ padding:.65rem .95rem }
+  }
+
+  /* Optional: turn it into a floating button by adding class "ydh-fab" */
+  .ydh-fab{ position: fixed; inset:auto 16px 16px 16px; width:max-content }
+</style>
+
+<a href="index.html" class="ydh-home" aria-label="Back to Home">
+  <!-- Home icon -->
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 10.5l9-7 9 7"/>
+    <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/>
+  </svg>
+  <span>Home</span>
+</a>
+
+<!--
+  Tip:
+  If you prefer a floating button, add the class "ydh-fab":
+  <a href="index.html" class="ydh-home ydh-fab">...</a>
+-->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>பழக்கங்களை மாற்றுதல்: Y-Diet வழிகாட்டி</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;600&display=swap');
+
+        :root {
+            --primary-color: #2c6e49; /* Dark Green */
+            --secondary-color: #4c956c; /* Lighter Green */
+            --accent-color: #ffc9b9; /* Peach */
+            --bg-color: #fefee3; /* Creamy White */
+            --text-color: #333d29; /* Dark Olive */
+            --card-bg: #ffffff;
+            --shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Hind Madurai', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 10px auto;
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .factor-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px 30px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .factor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .core { border-color: #d9534f; } /* Red */
+        .active { border-color: #5bc0de; } /* Blue */
+        .outer { border-color: #5cb85c; } /* Green */
+        
+        .factor-card h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .factor-card h2 span {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+
+        .factor-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .factor-card li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .factor-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .factor-card strong {
+             color: var(--primary-color);
+        }
+
+        .analogy-section {
+            background-color: #e8f5e9; /* Light green background */
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            border: 2px dashed var(--secondary-color);
+        }
+        
+        .analogy-section h3 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .analogy-section p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .conclusion {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 20px;
+        }
+
+        /* ===========================
+           Mobile-friendly enhancements
+           (adds behavior; does NOT change your design)
+           =========================== */
+
+        /* Better text rendering + media sizing */
+        * { -webkit-text-size-adjust: 100%; }
+        img, video { max-width: 100%; height: auto; }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+          * { transition: none !important; }
+        }
+
+        /* Touch devices: avoid accidental hover jumps */
+        @media (hover: none) and (pointer: coarse) {
+          .factor-card:hover { transform: none; box-shadow: var(--shadow); }
+        }
+
+        /* Phone layout tuning */
+        @media (max-width: 768px) {
+            body { padding: 14px; line-height: 1.75; }
+            .container { padding: 16px; margin: 12px auto; }
+            .header { margin-bottom: 26px; }
+            .header h1 { font-size: 2em; margin: 0 0 10px; }
+            .header p { font-size: 1.05em; margin: 8px auto 0; }
+
+            .factors-grid { grid-template-columns: 1fr; gap: 16px; }
+            .factor-card { padding: 18px 16px; border-radius: 12px; }
+            .factor-card h2 { font-size: 1.5em; }
+            .factor-card h2 span { font-size: 2rem; margin-right: 10px; }
+            .factor-card li { margin-bottom: 12px; padding-left: 22px; }
+
+            .analogy-section { padding: 18px; border-radius: 12px; }
+            .analogy-section h3 { font-size: 1.4em; }
+            .analogy-section p { font-size: 1.02em; }
+
+            .conclusion { font-size: 1.05em; padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>பழக்க மாற்றம் ஒரு பயணம், உடனடி நிகழ்வல்ல!</h1>
+            <p>Y-Diet தத்துவத்தின்படி, ஒரு எதிர்மறை பழக்கத்தை நேர்மறையாக மாற்றுவது என்பது பொறுமையும் சரியான புரிதலும் தேவைப்படும் ஒரு நீண்டகால உருமாற்றப் பயணம்.</p>
+        </div>
+
+        <div class="factors-grid">
+            <div class="factor-card core">
+                <h2><span>🧠</span>உள்ளார்ந்த காரணிகள்</h2>
+                <p>இவை உங்கள் மனநிலை, நம்பிக்கை மற்றும் சுய-விழிப்புணர்வுடன் தொடர்புடையவை. இதுவே மாற்றத்தின் ஆணிவேர்.</p>
+                <ul>
+                    <li><strong>விழிப்புணர்வு:</strong> "நான் ஏன் இதைச் செய்கிறேன்?" என்று உங்களை நீங்களே கேட்டுக்கொள்வது.</li>
+                    <li><strong>நம்பிக்கை:</strong> "என்னால் இந்த மாற்றத்தை வெற்றிகரமாகச் செய்ய முடியும்" என்ற ஆழமான நம்பிக்கை.</li>
+                    <li><strong>நோக்கம்:</strong> "நான் ஏன் மாற வேண்டும்?" என்பதற்கான தெளிவான காரணம்.</li>
+                    <li><strong>தன்னுடன் பேசுதல்:</strong> தவறு செய்தால் திட்டிக்கொள்ளாமல், ஆதரவாகப் பேசிக்கொள்வது.</li>
+                </ul>
+            </div>
+
+            <div class="factor-card active">
+                <h2><span>🎯</span>செயல்பாட்டுக் காரணிகள்</h2>
+                <p>இவை நீங்கள் மாற்றத்தை உருவாக்க எடுக்கும் நேரடி நடவடிக்கைகள் மற்றும் உத்திகள். இது 'எப்படி' செய்வதற்கான பதில்.</p>
+                <ul>
+                    <li><strong>ஸ்மார்ட் ஸ்வாப்:</strong> ஒரு தீய பழக்கத்தை, அதே பலனைத் தரும் ஒரு நல்ல பழக்கத்தால் மாற்றுவது.</li>
+                    <li><strong>சூழலை வடிவமைத்தல்:</strong> உங்கள் சூழலை உங்களுக்குச் சாதகமாக மாற்றுவது (எ.கா: பழங்களைக் கண்ணில் வைப்பது).</li>
+                    <li><strong>முன்-திட்டமிடல்:</strong> அடுத்த நாள் உணவைத் திட்டமிடுவது, ஆரோக்கியமான தின்பண்டங்களைக் கையோடு எடுத்துச் செல்வது.</li>
+                    <li><strong>சிறிய படிகள்:</strong> மாற்றத்தை ஒரே நாளில் செய்யாமல், படிப்படியாகச் செயல்படுத்துவது.</li>
+                </ul>
+            </div>
+
+            <div class="factor-card outer">
+                <h2><span>🤝</span>புறக் காரணிகள்</h2>
+                <p>இவை உங்கள் சமூகம், உறவுகள் மற்றும் வெளி உலகத் தாக்கங்களுடன் தொடர்புடையவை.</p>
+                <ul>
+                    <li><strong>சமூக ஆதரவு:</strong> உங்கள் இலக்குகளைப் பற்றி குடும்பத்தினரிடமும் நண்பர்களிடமும் கூறுவது.</li>
+                    <li><strong>சமூக அழுத்தம்:</strong> வற்புறுத்தினாலும், ஆரோக்கியமற்ற உணவுகளுக்கு "வேண்டாம்" என்று சொல்லக் கற்றுக்கொள்வது.</li>
+                    <li><strong>சரியான அறிவு:</strong> உணவு, ஊட்டச்சத்து மற்றும் பழக்கங்கள் பற்றிய அறிவைப் பெறுவது.</li>
+                    <li><strong>கருவிகள்:</strong> உணவு நாட்குறிப்பு எழுதுவது அல்லது செயலிகளைப் பயன்படுத்துவது.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="analogy-section">
+            <h3>🌱 மாற்றத்தை ஒரு செடி வளர்ப்பது போல நினையுங்கள்</h3>
+            <p><strong>உள்ளார்ந்த காரணிகள்</strong> தான் வளமான மண்.</p>
+            <p><strong>செயல்பாட்டுக் காரணிகள்</strong> தான் நீங்கள் நடும் விதை மற்றும் ஊற்றும் நீர்.</p>
+            <p><strong>புறக் காரணிகள்</strong> தான் செடிக்குக் கிடைக்கும் சூரிய ஒளியும், பாதுகாப்பும்.</p>
+        </div>
+
+        <div class="conclusion">
+            <p>இந்த மூன்றும் சரியான அளவில் இணையும்போதுதான், ஒரு சிறிய பழக்கம் என்ற செடி, ஆரோக்கியமான வாழ்க்கை என்ற பெரிய மரமாக வளரும். இதற்கு காலம் எடுக்கும், ஆனால் அதன் பலன் நிரந்தரமானது. Y-Diet இதைத்தான் வலியுறுத்துகிறது.</p>
+        </div>
+    </div>
+
+</body>
+</html>
+

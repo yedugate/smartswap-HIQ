@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<!-- Back to Home button (drop-in) -->
+<style>
+  /* Inherit theme if available, otherwise fall back */
+  :root{
+    --yd-primary: var(--primary, #2563eb);
+    --yd-primary-2: #4f8bff;
+    --yd-border: var(--border, #e5e7eb);
+    --yd-shadow: 0 10px 30px rgba(37,99,235,.25);
+  }
+  [data-theme="pink"]{
+    --yd-primary: #e91e63;
+    --yd-primary-2: #ff6fa1;
+    --yd-shadow: 0 10px 30px rgba(233,30,99,.28);
+  }
+
+  .ydh-home{
+    position: sticky; top: 12px; z-index: 50;
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.7rem 1rem; border-radius:999px;
+    background-image: linear-gradient(135deg,var(--yd-primary),var(--yd-primary-2));
+    color:#fff; font-weight:700; letter-spacing:.2px;
+    border:1px solid rgba(255,255,255,.32);
+    box-shadow: var(--yd-shadow);
+    text-decoration:none; -webkit-tap-highlight-color:transparent;
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  }
+  .ydh-home:hover{ transform: translateY(-1px); filter:saturate(1.08) }
+  .ydh-home:active{ transform: translateY(0); filter:saturate(1) }
+  .ydh-home:focus-visible{ outline:2px solid #fff; outline-offset:2px }
+  .ydh-home svg{ width:18px; height:18px; stroke:currentColor }
+  @media (max-width:768px){
+    .ydh-home{ padding:.65rem .95rem }
+  }
+
+  /* Optional: turn it into a floating button by adding class "ydh-fab" */
+  .ydh-fab{ position: fixed; inset:auto 16px 16px 16px; width:max-content }
+</style>
+
+<a href="index.html" class="ydh-home" aria-label="Back to Home">
+  <!-- Home icon -->
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 10.5l9-7 9 7"/>
+    <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/>
+  </svg>
+  <span>Home</span>
+</a>
+
+<!--
+  Tip:
+  If you prefer a floating button, add the class "ydh-fab":
+  <a href="index.html" class="ydh-home ydh-fab">...</a>
+-->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>சிறுவர்களுக்கான 25 எதிர்மறை உணவுப் பழக்கங்கள்</title>
+    <style>
+        /* Google Fonts for Tamil */
+        @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Catamaran', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #d33682;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #f0f4f8;
+            padding-bottom: 15px;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .table-container {
+            overflow-x: auto; /* For mobile responsiveness */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2aa198;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #eaf6f6;
+        }
+
+        td:first-child, th:first-child {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .smart-swap {
+            color: #268bd2;
+            font-weight: bold;
+        }
+
+        .footer-notes {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fffbe6;
+            border-left: 5px solid #ffc107;
+            border-radius: 5px;
+        }
+
+        .footer-notes h3 {
+            margin-top: 0;
+            color: #cb4b16;
+        }
+
+        /* ===========================
+           Mobile-friendly enhancements
+           (adds behavior; does NOT change your design)
+           =========================== */
+
+        /* smoother swipe on phones */
+        .table-container {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* keep columns readable on small screens by allowing horizontal scroll
+           instead of over-squeezing columns */
+        table {
+            border-collapse: separate;   /* needed for sticky header shadow below */
+            border-spacing: 0;
+            min-width: 780px;            /* adjust if you prefer wider/narrower */
+        }
+
+        /* sticky header for long tables */
+        thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            /* subtle separator when stuck */
+            box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+        }
+
+        /* tiny swipe hint only on small screens */
+        .table-container::after {
+            content: '↔︎ ஸ்வைப் செய்து பார்க்கவும்';
+            display: block;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 769px) {
+            .table-container::after { content: ''; }
+        }
+
+        /* sensible spacing on phones */
+        @media (max-width: 768px) {
+            body { padding: 14px; line-height: 1.65; }
+            .container { padding: 18px; border-radius: 10px; }
+            h1 { font-size: 1.7em; margin-bottom: 18px; }
+            .intro { font-size: 1em; margin-bottom: 20px; }
+            th, td { padding: 12px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>சிறுவர் மற்றும் இளைஞர்களுக்கான உணவுப் பழக்க வழிகாட்டி</h1>
+        <p class="intro">1 முதல் 20 வயது வரையிலான குழந்தைகளிடம் பொதுவாகக் காணப்படும் 25 எதிர்மறை உணவுப் பழக்கச் சுழற்சிகளையும், அவற்றை மாற்றுவதற்கான எளிய வழிகளையும் இங்கே காணலாம்.</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>வயது</th>
+                        <th>சூழ்நிலை / தூண்டுதல் (Cue)</th>
+                        <th>தவறான பழக்கம் (Routine)</th>
+                        <th>உடனடிப் பலன்</th>
+                        <th>நீண்டகாலப் பாதிப்பு</th>
+                        <th>ஒரு வரி மாற்று வழி (Smart Swap)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>1–3</td><td>குழந்தை அழுகிறது</td><td>புட்டியில் இனிப்பு கலந்த பால்/மாவுப்பண்டம் கொடுத்து அமைதிப்படுத்துதல்</td><td>உடனடி அமைதி</td><td>சர்க்கரைப் பழக்கம், பற்சொத்தை</td><td class="smart-swap">அழும்போது, தண்ணீர்/தூக்கத்திற்கு ஆறுதல்படுத்தி, பழத்துண்டு கொடுக்கலாம்.</td></tr>
+                    <tr><td>2</td><td>1–3</td><td>உணவு நேரம்</td><td>திரை முன் உணவூட்டுதல்</td><td>வேகமாகச் சாப்பிட வைக்கும் உணர்வு</td><td>பசி மற்றும் நிறைவு சமிக்ஞைகளில் குழப்பம்</td><td class="smart-swap">திரை இல்லாமல், தட்டில் சிறியளவு உணவு வைத்து, குழந்தையைத் தானாக உண்ண ஊக்குவித்தல்.</td></tr>
+                    <tr><td>3</td><td>2–5</td><td>ஒரு செயலில் வெற்றி பெற்றால்</td><td>மிட்டாய்/சாக்லேட் பரிசளித்தல்</td><td>தற்காலிக மகிழ்ச்சி</td><td>'நல்ல நடத்தைக்கு இனிப்புதான் பரிசு' என்ற எண்ணம்</td><td class="smart-swap">பரிசாக ஒட்டுவில்லை (ஸ்டிக்கர்), பாடல் அல்லது கதை சொல்லலாம்.</td></tr>
+                    <tr><td>4</td><td>3–6</td><td>மாலையில் வீடு திரும்பும் பாதை</td><td>வறுவல் (சிப்ஸ்) போன்ற நொறுக்குத்தீனி வாங்குதல்</td><td>சுவை, வசதி</td><td>உப்பு, கொழுப்புப் பழக்கம்</td><td class="smart-swap">வறுத்த கொண்டைக்கடலை/வேர்க்கடலையைக் கையில் வைத்திருக்கலாம்.</td></tr>
+                    <tr><td>5</td><td>4–8</td><td>கடை விற்பனையிடத்தில் வண்ண விளம்பரம்</td><td>அடம் பிடித்து சாக்லேட் வாங்க வைத்தல்</td><td>உடனடி மகிழ்ச்சி</td><td>அதிக சர்க்கரை பழக்கத்திற்கு வழிவகுத்தல்</td><td class="smart-swap">பட்டியலிட்டு, வாரத்திற்கு ஒருமுறை மட்டும் இனிப்பு என்ற விதியைப் பின்பற்றலாம்.</td></tr>
+                    <tr><td>6</td><td>6–10</td><td>சிற்றுண்டி எளிதாக வேண்டும் என்ற எண்ணம்</td><td>பெட்டிப் பழச்சாறு மற்றும் அணிச்சல் (கேக்)</td><td>உடனடி இனிப்புச் சக்தி</td><td>இரத்த சர்க்கரை உயர்வு</td><td class="smart-swap">சிறிதளவு பழம் மற்றும் தயிர்/நெய் கலந்த சாதம்.</td></tr>
+                    <tr><td>7</td><td>7–12</td><td>சிறப்பு வகுப்பு இடைவேளை வாசனை</td><td>சமோசா/பஜ்ஜி சாப்பிடும் வழக்கம்</td><td>சூடான சுவை</td><td>தினமும் வறுத்த உணவுப் பழக்கம்</td><td class="smart-swap">வறுத்த சுண்டல்/மக்காச்சோளம்.</td></tr>
+                    <tr><td>8</td><td>8–14</td><td>காலையில் அவசரம்</td><td>காலை உணவைத் தவிர்த்து, வழியில் நொறுக்குத்தீனி சாப்பிடுதல்</td><td>நேரச் சேமிப்பு</td><td>கவனக்குறைவு, பின்னர் அதிகம் சாப்பிடுதல்</td><td class="smart-swap">2 நிமிடத்தில் தயாராகும் இட்லி/கஞ்சி.</td></tr>
+                    <tr><td>9</td><td>9–15</td><td>விளையாட்டு முடிந்ததும் தாகம்</td><td>குளிர்பானங்கள்/ஆற்றல் பானங்கள் குடித்தல்</td><td>குளிர்ச்சி, புத்துணர்ச்சி</td><td>அதிக சர்க்கரை-காஃபின் உட்கொள்ளல்</td><td class="smart-swap">தண்ணீர் மற்றும் மோர்/இளநீர்.</td></tr>
+                    <tr><td>10</td><td>10–16</td><td>தாமதமாக வீட்டுப்பாடம் செய்தல்</td><td>இரவில் உடனடி நூடுல்ஸ் சாப்பிடுதல்</td><td>சுலபம்</td><td>இரவில் தாமதமாகச் சாப்பிடுவதால் நெஞ்செரிச்சல்</td><td class="smart-swap">இரவு 7 மணிக்குள் சூப் உடன் முட்டை/பருப்பு.</td></tr>
+                    <tr><td>11</td><td>10–18</td><td>கொண்டாட்டம்</td><td>கேக்கின் பெரிய துண்டை சாப்பிடும் வழக்கம்</td><td>குழுவாக மகிழ்தல்</td><td>உணவின் அளவு அதிகரித்தல், அதிக சர்க்கரை</td><td class="smart-swap">சிறிய துண்டுடன் பழங்களையும் சேர்த்துக் கொள்ளலாம்.</td></tr>
+                    <tr><td>12</td><td>11–17</td><td>படிப்பு மன அழுத்தம்</td><td>தொடர்ந்து சிப்ஸ்/வறுவல் சாப்பிடுதல்</td><td>தற்காலிக மன அமைதி</td><td>கணக்கற்ற கலோரிகளை உட்கொள்ளுதல்</td><td class="smart-swap">ஒரு கைப்பிடி கொட்டைகள் (நட்ஸ்) மற்றும் தண்ணீர்.</td></tr>
+                    <tr><td>13</td><td>12–18</td><td>கூட்டுச் சலுகை விளம்பரம்</td><td>பெரிய அளவைத் தேர்ந்தெடுத்தல்</td><td>'பணத்திற்கு லாபம்' என்ற உணர்வு</td><td>அளவுக்கு அதிகமாகச் சாப்பிடுதல்</td><td class="smart-swap">சிறிய அளவைத் தேர்ந்தெடுத்து, பானமாகத் தண்ணீரைக் குடிக்கலாம்.</td></tr>
+                    <tr><td>14</td><td>12–18</td><td>இரவு கண் விழித்தல்</td><td>ஆற்றல் பானம்/கடுங்காபி குடித்தல்</td><td>விழித்திருக்கும் உணர்வு</td><td>தூக்கக் குழப்பம், சீரற்ற இதயத் துடிப்பு</td><td class="smart-swap">வெந்நீர் மற்றும் நீட்சிப் பயிற்சி, காஃபினைத் தவிர்க்கவும்.</td></tr>
+                    <tr><td>15</td><td>13–19</td><td>நண்பர்களின் தூண்டுதல்</td><td>வார இறுதியில் பிரியாணி/வறுத்த உணவுகள் சாப்பிடும் வழக்கம்</td><td>குழுவுடன் இணக்கம்</td><td>அதிக கொழுப்புச் சத்து உடலில் சேர்தல்</td><td class="smart-swap">உணவைப் பகிர்ந்து, முதலில் சாலட் சாப்பிடலாம்.</td></tr>
+                    <tr><td>16</td><td>13–19</td><td>சமூக ஊடக சவால்கள்</td><td>காரம்/பாலாடைக்கட்டி "உணவு சவால்"</td><td>பரபரப்பு</td><td>அசாதாரண அளவு காரம்/உப்பு உடலுக்குச் செல்லுதல்</td><td class="smart-swap">வீட்டிலேயே பழ ஓவியம் வரையும் சவால்.</td></tr>
+                    <tr><td>17</td><td>14–20</td><td>சோர்வான இடைவேளை</td><td>அதிக சர்க்கரையுடன் 3–4 முறை தேநீர்/காபி</td><td>உடனடி உற்சாகம்</td><td>சர்க்கரைக்கு அடிமையாதல்</td><td class="smart-swap">சர்க்கரையைக் குறைத்து, மோருக்கு மாறலாம்.</td></tr>
+                    <tr><td>18</td><td>14–20</td><td>இரவு உணவிற்குப் பின் வெளியே செல்லுதல்</td><td>பழக்கலவை/பனிக்கூழ் தினசரி சாப்பிடுதல்</td><td>சுவை ஆறுதல்</td><td>தினமும் இரவில் இனிப்பு சாப்பிடும் பழக்கம்</td><td class="smart-swap">வாரத்தில் 1–2 முறை மட்டும்; மாற்றாகப் பழம்.</td></tr>
+                    <tr><td>19</td><td>15–20</td><td>'ஆரோக்கியம்' பற்றிய தவறான நம்பிக்கை</td><td>உணவு மாற்றுப் பட்டைகள் சாப்பிடுதல்</td><td>சுலபம்</td><td>நார்ச்சத்து/உண்மையான காய்கறிகள் இல்லாமை</td><td class="smart-swap">சத்தான கஞ்சி/சாலட்.</td></tr>
+                    <tr><td>20</td><td>15–20</td><td>நீண்ட பயணம்</td><td>அடுமனைப் பண்டங்கள் (பஃப்ஸ்) தினசரி சாப்பிடுதல்</td><td>நிம்மதி, மொறுமொறுப்பு</td><td>சுத்திகரிக்கப்பட்ட மாவுச்சத்து அதிகம்</td><td class="smart-swap">பயணப்பைக்குள் கொட்டைகள்+பழங்கள்.</td></tr>
+                    <tr><td>21</td><td>5–10</td><td>தாத்தா-பாட்டியின் 'அன்பு'</td><td>ஒவ்வொரு வருகையின் போதும் மிட்டாய் தருதல்</td><td>பாச உணர்வு</td><td>'அன்பு என்றால் இனிப்பு' எனப் பொருள்படுதல்</td><td class="smart-swap">அன்பு = கதை/விளையாட்டு/பழம்.</td></tr>
+                    <tr><td>22</td><td>7–13</td><td>மதிய உணவு</td><td>காய்கறி தவிர்த்து, சாதம்+அப்பளம் சாப்பிடுதல்</td><td>சுவை</td><td>நார்ச்சத்து குறைவு, இரத்த சர்க்கரை உயர்வு</td><td class="smart-swap">முதலில் 3 கரண்டி காய்கறி சாப்பிடும் விதி.</td></tr>
+                    <tr><td>23</td><td>10–18</td><td>தேர்வு மன அழுத்தம்</td><td>ஆறுதலுக்காக பீட்சா/பர்கர் சாப்பிடுதல்</td><td>சமாதானம்</td><td>அதிக கலோரி, சோடியம்</td><td class="smart-swap">காய்கறி சாண்ட்விச்/அடை + சாம்பார்.</td></tr>
+                    <tr><td>24</td><td>8–16</td><td>பூஜை/பிரசாதம் சேமிப்பு</td><td>பல நாட்களுக்கு லட்டு/மிட்டாய் சாப்பிடுதல்</td><td>இனிப்புத் தொடர்ச்சி</td><td>தினசரி சர்க்கரை அதிகச் சுமை</td><td class="smart-swap">கிடைத்த அன்றே பகிர்ந்து, ஒரு நாள் மட்டும் சாப்பிடுதல்.</td></tr>
+                    <tr><td>25</td><td>6–14</td><td>தாகத்தின் போது விளம்பரம்</td><td>சோடா/வண்ணப் பானங்கள் குடித்தல்</td><td>சுவை</td><td>தண்ணீர் குடிக்கும் பழக்கம் குறைதல்</td><td class="smart-swap">முதலில் தண்ணீர், பானங்களைத் தவிர்த்தல்.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer-notes">
+            <h3>முக்கிய குறிப்பு:</h3>
+            <p>ஒவ்வொரு எதிர்மறை பழக்கமும் <strong>தூண்டுதல் → செயல் → வெகுமதி → அர்த்தம்</strong> என்ற சுழற்சியைக் கொண்டுள்ளது. வெற்றி பெற, <strong>அறிந்து (Recognize), மாற்றி (Replace), மறுசீரமைத்து (Rewire), பாராட்டும் (Reward)</strong> கொள்கைகளைப் பயன்படுத்தவும்.</p>
+            <p><strong>காலமுறை வெற்றி (Chrono Win):</strong> இரவு 7 மணிக்குள் எளிய இரவு உணவை முடிப்பது, இது போன்ற பல பழக்கச் சுழற்சிகளை உடைக்க உதவுகிறது.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

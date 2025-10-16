@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Y-Diet — முகப்பு</title>
+  <meta name="color-scheme" content="light" />
+  <style>
+    /* =========================================
+       YD-UI 0.1 — tiny utility + theme layer
+       (no build step; works on GitHub Pages)
+       ========================================= */
+    :root{
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --primary: #2563eb;           /* blue */
+      --primary-soft: rgba(37,99,235,.12);
+      --ring: 0 0 0 .12rem var(--primary-soft);
+      --radius: 16px;
+      --shadow-sm: 0 2px 10px rgba(0,0,0,.04);
+      --shadow: 0 6px 20px rgba(0,0,0,.08);
+      --chip: #f3f4f6;
+    }
+    /* Pink / Kids theme */
+    [data-theme="pink"]{
+      --primary: #e91e63;           /* pink */
+      --primary-soft: rgba(233,30,99,.14);
+      --surface: #fff6fa;
+      --chip: #ffe3ef;
+      --bg: #ffffff;
+    }
+
+    /* Base & helpers */
+    *{ box-sizing: border-box }
+    html,body{ height:100% }
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Hind Madurai","Latha","Noto Sans Tamil",sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.7;
+      -webkit-text-size-adjust:100%;
+      text-rendering: optimizeLegibility;
+    }
+    a{ color:inherit; text-decoration:none }
+    img{ max-width:100%; height:auto; display:block }
+    .container{ max-width:1080px; margin:0 auto; padding:16px 18px 28px }
+
+    /* Utilities */
+    .btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem;
+          border-radius:12px; border:1px solid var(--border); background:#fff;
+          box-shadow: var(--shadow-sm); font-weight:600; }
+    .btn:focus-visible{ outline: none; box-shadow: var(--ring), var(--shadow-sm) }
+    .btn-solid{ background: var(--primary); color:#fff; border-color: transparent }
+    .btn-chip{ background: var(--chip) }
+    .row{ display:flex; align-items:center; justify-content:space-between; gap:12px }
+    .muted{ color:var(--muted) }
+
+    /* Header */
+    header{ padding:14px 0 }
+    .brand{ font-weight:800; letter-spacing:.2px; font-size:1.15rem }
+    .nav{ display:flex; gap:10px; flex-wrap:wrap }
+    .chip{ padding:.45rem .7rem; border-radius:999px; border:1px solid var(--border); background:var(--chip) }
+
+    /* Carousel */
+    .carousel{ position:relative; border-radius: var(--radius); overflow:hidden; background:var(--surface); box-shadow:var(--shadow); }
+    .track{
+      display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none; touch-action:pan-y;
+    }
+    .track::-webkit-scrollbar{ display:none }
+    .slide{ flex:0 0 100%; scroll-snap-align:start; position:relative }
+    .slide a{ display:block }
+    .slide img{ aspect-ratio:16/9; object-fit:cover }
+    .badge{
+      position:absolute; left:12px; bottom:12px; padding:.42rem .7rem; font-size:.9rem; font-weight:700;
+      border-radius:999px; color:#111; background:rgba(255,255,255,.9);
+      border:1px solid var(--border); -webkit-backdrop-filter:saturate(140%) blur(4px); backdrop-filter:saturate(140%) blur(4px);
+    }
+    .ctrl{
+      position:absolute; top:50%; transform:translateY(-50%); border:0; cursor:pointer;
+      width:40px; height:40px; display:grid; place-items:center; border-radius:50%;
+      color:#fff; background:rgba(0,0,0,.45);
+    }
+    .ctrl:hover{ background:rgba(0,0,0,.6) }
+    .prev{ left:10px } .next{ right:10px }
+    .dots{ position:absolute; inset:auto 0 10px 0; display:flex; gap:8px; justify-content:center; pointer-events:none }
+    .dots button{ pointer-events:auto; width:8px; height:8px; border-radius:50%; border:0; background:#d1d5db }
+    .dots button.active{ background:var(--primary) }
+
+    /* Cards */
+    .grid{ display:grid; gap:16px; margin-top:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)) }
+    .card{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .2s ease }
+    .card:hover{ transform: translateY(-2px); box-shadow: var(--shadow) }
+    .card h3{ margin:0 0 6px; font-size:1.05rem }
+    .card p{ margin:0; color:var(--muted); font-size:.95rem }
+    .go{ display:inline-block; margin-top:10px; padding:8px 12px; border-radius:10px; border:1px solid var(--border) }
+
+    /* Footer */
+    footer{ margin-top:28px; color:var(--muted); font-size:.9rem; text-align:center }
+
+    /* Mobile tuning */
+    @media (max-width:768px){
+      .brand{ font-size:1.05rem }
+      .ctrl{ width:36px; height:36px }
+    }
+    @media (prefers-reduced-motion:reduce){
+      *{ transition:none!important; scroll-behavior:auto }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="top">
+    <header class="row" aria-label="Site header">
+      <div class="brand">Y-Diet • முகப்பு</div>
+      <nav class="nav" aria-label="Quick navigation">
+        <a class="chip" href="page1.html">Page 1</a>
+        <a class="chip" href="page2.html">Page 2</a>
+        <a class="chip" href="page3.html">Page 3</a>
+        <button class="btn btn-chip" id="themeToggle" type="button" aria-pressed="false" title="Kids / Pink Theme">🌸 Pink</button>
+      </nav>
+    </header>
+
+    <!-- Banner Carousel -->
+    <section class="carousel" id="hero" aria-label="முக்கிய பேனர்">
+      <div class="track">
+        <div class="slide">
+          <a href="page1.html" aria-label="Go to Page 1">
+            <img src="banner1.png" alt="Page 1 – Healthy habits banner" loading="eager" />
+            <span class="badge">Page 1</span>
+          </a>
+        </div>
+        <div class="slide">
+          <a href="page2.html" aria-label="Go to Page 2">
+            <img src="banner2.png" alt="Page 2 – Smart swaps banner" loading="lazy" />
+            <span class="badge">Page 2</span>
+          </a>
+        </div>
+        <div class="slide">
+          <a href="page3.html" aria-label="Go to Page 3">
+            <img src="banner3.png" alt="Page 3 – Habit journey banner" loading="lazy" />
+            <span class="badge">Page 3</span>
+          </a>
+        </div>
+      </div>
+      <button class="ctrl prev" aria-label="Previous slide" type="button">❮</button>
+      <button class="ctrl next" aria-label="Next slide" type="button">❯</button>
+      <div class="dots" aria-label="Carousel pagination">
+        <button aria-label="Slide 1" class="active"></button>
+        <button aria-label="Slide 2"></button>
+        <button aria-label="Slide 3"></button>
+      </div>
+    </section>
+
+    <!-- Sections -->
+    <section class="grid" aria-label="Sections">
+      <a class="card" href="page1.html">
+        <h3>Page 1</h3>
+        <p>பழக்க நுண்ணறிவு • Habit basics & insights.</p>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="page2.html">
+        <h3>Page 2</h3>
+        <p>ஸ்மார்ட் ஸ்வாப் • Practical healthy swaps.</p>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="page3.html">
+        <h3>Page 3</h3>
+        <p>பயணமாக மாற்றம் • Your transformation path.</p>
+        <span class="go">Open →</span>
+      </a>
+    </section>
+
+    <footer>© Y-Diet</footer>
+  </div>
+
+  <script>
+    // Theme toggle (persists via localStorage)
+    (function theme(){
+      const key = 'yd_theme';
+      const btn = document.getElementById('themeToggle');
+      const apply = v => {
+        if(v==='pink'){ document.documentElement.setAttribute('data-theme','pink'); btn.setAttribute('aria-pressed','true'); }
+        else{ document.documentElement.removeAttribute('data-theme'); btn.setAttribute('aria-pressed','false'); }
+        localStorage.setItem(key, v||'white');
+      };
+      apply(localStorage.getItem(key));
+      btn.addEventListener('click', ()=>{
+        const pink = document.documentElement.getAttribute('data-theme')!=='pink';
+        apply(pink ? 'pink' : 'white');
+      });
+    })();
+
+    // Lightweight, accessible carousel
+    (function initCarousel(id){
+      const root = document.getElementById(id);
+      if(!root) return;
+      const track = root.querySelector('.track');
+      const slides = Array.from(track.children);
+      const prev = root.querySelector('.prev');
+      const next = root.querySelector('.next');
+      const dots = Array.from(root.querySelectorAll('.dots button'));
+      let index = 0, lock = false;
+
+      function activate(i){
+        dots.forEach(d=>d.classList.remove('active'));
+        dots[i].classList.add('active');
+      }
+      function go(i){
+        index = (i + slides.length) % slides.length;
+        track.scrollTo({ left: track.clientWidth * index, behavior: 'smooth' });
+        activate(index);
+      }
+      prev.addEventListener('click', ()=>go(index-1));
+      next.addEventListener('click', ()=>go(index+1));
+      dots.forEach((d,i)=>d.addEventListener('click', ()=>go(i)));
+
+      // Sync dots on swipe
+      track.addEventListener('scroll', ()=>{
+        if(lock) return;
+        const i = Math.round(track.scrollLeft / track.clientWidth);
+        if(i !== index){ index = i; activate(index); }
+      }, { passive: true });
+
+      // Keep slide aligned on resize
+      window.addEventListener('resize', ()=>{
+        lock = true; track.scrollLeft = track.clientWidth * index; lock = false;
+      });
+    })('hero');
+  </script>
+</body>
+</html>
+
